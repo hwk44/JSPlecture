@@ -18,18 +18,18 @@ public class JDBCClientMySQL {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "musthave", "tiger");
 
 		// 질의를 위한 객체 생성
-		
 		Statement st = con.createStatement();
 
 		// SQL 질의
 		// 질의 객체를 만들고 executeQuery로 질의를 날려서 질의를 받는게 resultSet 객체
-		ResultSet rs = st.executeQuery("select Name,Continent,Population,HeadOfState from country");
+		ResultSet rs = st.executeQuery("select Name,Continent,Population,HeadOfState "
+									  + "from country");
 
 		// 질의 결과 Parsing 
 		// cursor Processing
 		// 데이터 베이스로 질의를 날리면, 데이터를 한번에 가져오는것이 아니라, 데이터 베이스 안에 질의 결과가 테이블 형태로 만들어져 있음
 		// 그런데 rs 객체가 그 테이블을 가리킴 (heap을 가리키듯)
-		// cursor Processing 에서는 처음에 빈 공간을 가리키지만
+		// cursor Processing 에서는 처음에 테이블 위의 (허공)빈 공간을 가리키지만
 		// rs.next 함수를 호출하게 되면 첫번째 레코드 값을 가져와서 저장하는 것임 
 		// 그리고 getString 으로 ~~~ ???
 		
